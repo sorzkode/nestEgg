@@ -1,0 +1,149 @@
+/* 
+███╗   ██╗███████╗███████╗████████╗███████╗ ██████╗  ██████╗ 
+████╗  ██║██╔════╝██╔════╝╚══██╔══╝██╔════╝██╔════╝ ██╔════╝ 
+██╔██╗ ██║█████╗  ███████╗   ██║   █████╗  ██║  ███╗██║  ███╗
+██║╚██╗██║██╔══╝  ╚════██║   ██║   ██╔══╝  ██║   ██║██║   ██║
+██║ ╚████║███████╗███████║   ██║   ███████╗╚██████╔╝╚██████╔╝
+╚═╝  ╚═══╝╚══════╝╚══════╝   ╚═╝   ╚══════╝ ╚═════╝  ╚═════╝ 
+Syle Sheet for a Nest Egg calculator that determines the future value of your retirement fund.
+-
+Author:
+Mister Riley
+sorzkode@proton.me
+https://github.com/sorzkode
+
+MIT License
+Copyright (c) 2023 Mister Riley
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/ 
+
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css');
+
+/* Defining color variables */
+* {
+  --black: rgb(0, 0, 0);
+  --burgundy: rgb(189, 0, 0);
+  --lime: rgba(31%, 78%, 47%, 1);
+  --offWhite: rgb(204, 204, 204);
+  --slateGray: rgba(44%, 50%, 56%, 0.623);
+
+/* Setting global box sizing */
+box-sizing: border-box;
+  
+}
+
+/* Heading elements coloring */
+h1, h2, h3, h4, h5 {
+  color: var(--lime);
+  text-align: center;
+}
+
+body {
+  font-family: 'Helvetica', 'Arial', serif;
+  min-height: 100vh;
+  background-color: var(--slateGray);
+  color: var(--offWhite);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+
+form {
+  position: relative;
+  background-color: var(--black);
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px var(--black);
+  padding: 20px;
+  margin-bottom: 50px;
+  width: 600px;
+  display: flex; /* Center the content horizontally */
+  flex-direction: column; /* Stack the content vertically */
+  align-items: center; /* Center the content vertically */
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 0 2pt var(--lime);
+  background-color: var(--slateGray);
+  color: var(--offWhite);
+}
+
+.form-control {
+  border-radius: 6px;
+  border-color: var(--slateGray);
+  color: var(--offWhite);
+}
+
+.form h2 {
+  text-align: center;
+  margin: 0 0 50px;
+}
+
+.form-group {
+  position: relative;
+  display: grid;
+  align-items: center;
+  grid-template-areas:
+    'label'
+    'input';
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  grid-row-gap: 0px;
+  margin-bottom: 20px;
+  width: 100%; /* Stretch the width to match the form */
+}
+
+.form-group label {
+  grid-area: label;
+  color: var(--offWhite);
+  text-align: left; /* Left align the label text */
+}
+
+.form-group input {
+  grid-area: input;
+  color: var(--offWhite);
+  background-color: var(--slateGray);
+  justify-self: center; /* Center the input horizontally */
+  width: 100%; /* Stretch the width to match the form */
+}
+
+.input-group-addon {
+  background-color: var(--slateGray);
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.input-group-addon i {
+  font-size: 1.5em;
+  color: var(--offWhite);
+}
+
+.btn-primary {
+  border-radius: 6px;
+  margin-left: auto; /* Align the button to the right */
+}
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 2pt var(--lime);
+}
+
+.btn-primary-addon {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.btn-primary-addon i {
+  font-size: 1.5em;
+  color: var(--offWhite);
+}
