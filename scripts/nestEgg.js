@@ -24,104 +24,101 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 '''
 */                                                             
 
+// Function to calculate the future value of retirement fund
 function nestEgg() {
   // User input values
-  const currentAgeInput = document.getElementById('current-age');
-  const retirementAgeInput = document.getElementById('retirement-age');
-  const employeeContInput = document.getElementById('employee-cont');
-  const employerContInput = document.getElementById('employer-cont');
-  const interestRateInput = document.getElementById('interest-rate');
-  const inflationRateInput = document.getElementById('inflation-rate');
-  const currentSavingsInput = document.getElementById('current-savings');
-  const salaryIncreaseInput = document.getElementById('salary-increase');
-  const currentSalaryInput = document.getElementById('current-salary');
+  const currentAgeInput = document.getElementById('current-age'); // Input field for current age
+  const retirementAgeInput = document.getElementById('retirement-age'); // Input field for retirement age
+  const employeeContInput = document.getElementById('employee-cont'); // Input field for employee contribution
+  const employerContInput = document.getElementById('employer-cont'); // Input field for employer contribution
+  const interestRateInput = document.getElementById('interest-rate'); // Input field for interest rate
+  const inflationRateInput = document.getElementById('inflation-rate'); // Input field for inflation rate
+  const currentSavingsInput = document.getElementById('current-savings'); // Input field for current savings
+  const salaryIncreaseInput = document.getElementById('salary-increase'); // Input field for annual salary increase
+  const currentSalaryInput = document.getElementById('current-salary'); // Input field for current salary
 
   // Input validations
-  const currentAge = parseInt(currentAgeInput.value.trim());
-  if (isNaN(currentAge) || currentAge == '') { 
-    alert('Please enter a valid age.');
-    currentAgeInput.focus();
+  const currentAge = parseInt(currentAgeInput.value.trim()); // Parse and validate current age
+  if (Number.isNaN(currentAge) || currentAge === '') { 
+    showError('Please enter a valid age.', currentAgeInput);
     return;
   }
 
-  const retirementAge = parseInt(retirementAgeInput.value.trim());
-  if (isNaN(retirementAge) || retirementAge == '' || retirementAge < currentAge) { 
-    alert('Please enter a valid retirement age.');
-    retirementAgeInput.focus();
+  const retirementAge = parseInt(retirementAgeInput.value.trim()); // Parse and validate retirement age
+  if (Number.isNaN(retirementAge) || retirementAge === '' || retirementAge < currentAge) { 
+    showError('Please enter a valid retirement age.', retirementAgeInput);
     return;
   }
 
-  const yearsToRetirement = retirementAge - currentAge;
+  const yearsToRetirement = retirementAge - currentAge; // Calculate years to retirement
 
-  const employeeContribution = parseInt(employeeContInput.value.trim()) / 100;
-  if (isNaN(employeeContribution) || employeeContribution == '') { 
-    alert('Please enter a valid contribution.');
-    employeeContribution.focus();
+  const employeeContribution = parseFloat(employeeContInput.value.trim()) / 100; // Parse and validate employee contribution
+  if (Number.isNaN(employeeContribution) || employeeContribution === '') { 
+    showError('Please enter a valid contribution.', employeeContInput);
     return;
   }
 
-  const employerContribution = parseInt(employerContInput.value.trim()) / 100;
-  if (isNaN(employerContribution) || employerContribution == '' || employerContribution > employeeContribution) { 
-    alert('Please enter a valid employer contribution.');
-    employerContInput.focus();
+  const employerContribution = parseFloat(employerContInput.value.trim()) / 100; // Parse and validate employer contribution
+  if (Number.isNaN(employerContribution) || employerContribution === '' || employerContribution > employeeContribution) { 
+    showError('Please enter a valid employer contribution.', employerContInput);
     return;
   }
 
-  const interestRate = parseInt(interestRateInput.value.trim()) / 100;
-  if (isNaN(interestRate) || interestRate < 0) {
-    alert('Please enter a valid interest rate.');
-    interestRateInput.focus();
+  const interestRate = parseFloat(interestRateInput.value.trim()) / 100; // Parse and validate interest rate
+  if (Number.isNaN(interestRate) || interestRate < 0) {
+    showError('Please enter a valid interest rate.', interestRateInput);
     return;
   }
 
-  const expectedInflationRate = parseInt(inflationRateInput.value.trim()) / 100;
-  if (isNaN(expectedInflationRate) || expectedInflationRate < 0) {
-    alert('Please enter a valid inflation rate.');
-    inflationRateInput.focus();
+  const expectedInflationRate = parseFloat(inflationRateInput.value.trim()) / 100; // Parse and validate inflation rate
+  if (Number.isNaN(expectedInflationRate) || expectedInflationRate < 0) {
+    showError('Please enter a valid inflation rate.', inflationRateInput);
     return;
   }
 
-  const currentSavingsAmount = parseInt(currentSavingsInput.value.trim());
-  if (isNaN(currentSavingsAmount) || currentSavingsAmount < 0) {
-    alert('Please enter a valid current savings amount.');
-    currentSavingsInput.focus();
+  const currentSavingsAmount = parseInt(currentSavingsInput.value.trim()); // Parse and validate current savings amount
+  if (Number.isNaN(currentSavingsAmount) || currentSavingsAmount < 0) {
+    showError('Please enter a valid current savings amount.', currentSavingsInput);
     return;
   }
 
-  const annualSalaryIncrease = parseInt(salaryIncreaseInput.value.trim());
-  if (isNaN(annualSalaryIncrease) || annualSalaryIncrease < 0) {
-    alert('Please enter a valid annual salary increase.');
-    salaryIncreaseInput.focus();
+  const annualSalaryIncrease = parseFloat(salaryIncreaseInput.value.trim()); // Parse and validate annual salary increase
+  if (Number.isNaN(annualSalaryIncrease) || annualSalaryIncrease < 0) {
+    showError('Please enter a valid annual salary increase.', salaryIncreaseInput);
     return;
   }
 
-  const currentSalary = parseInt(currentSalaryInput.value.trim());
-  if (isNaN(currentSalary) || currentSalary < 0) {
-    alert('Please enter a valid current salary.');
-    currentSalaryInput.focus();
+  const currentSalary = parseInt(currentSalaryInput.value.trim()); // Parse and validate current salary
+  if (Number.isNaN(currentSalary) || currentSalary < 0) {
+    showError('Please enter a valid current salary.', currentSalaryInput);
     return;
   }
 
   // Set initial values for the variables
-  let currentSavings = currentSavingsAmount;
-  let totalContributions = 0;
-  let totalInterest = 0;
+  let currentSavings = currentSavingsAmount; // Initialize current savings with the provided amount
+  let totalContributions = 0; // Initialize total contributions to 0
+  let totalInterest = 0; // Initialize total interest to 0
 
   // Loop through each year until retirement
   for (let i = 1; i <= yearsToRetirement; i++) {
     // Calculate salary, contributions, and interest for the current year
-    const yearEndSalary = currentSalary * ((1 + annualSalaryIncrease / 100) ** i);
-    const employeeContributionAmount = (employeeContribution / 100) * yearEndSalary;
-    const employerContributionAmount = (employerContribution / 100) * yearEndSalary;
-    const totalContribution = employeeContributionAmount + employerContributionAmount;
-    totalContributions += totalContribution;
+    const yearEndSalary = currentSalary * Math.pow((1 + annualSalaryIncrease / 100), i); // Calculate salary at the end of the year
+    const employeeContributionAmount = (employeeContribution / 100) * yearEndSalary; // Calculate employee contribution amount
+    const employerContributionAmount = (employerContribution / 100) * yearEndSalary; // Calculate employer contribution amount
+    const totalContribution = employeeContributionAmount + employerContributionAmount; // Calculate total contribution for the year
+    totalContributions += totalContribution; // Accumulate total contributions
 
-    const yearEndInflation = (1 + expectedInflationRate) ** i;
-    const yearEndInterest = (currentSavings + totalContributions) * interestRate * yearEndInflation;
-    totalInterest += yearEndInterest;
+    const yearEndInflation = Math.pow((1 + expectedInflationRate), i); // Calculate inflation rate at the end of the year
+    const yearEndInterest = (currentSavings + totalContributions) * interestRate * yearEndInflation; // Calculate interest for the year
+    totalInterest += yearEndInterest; // Accumulate total interest
     // Update the current savings with the contributions and interest for the year
     currentSavings += totalContribution + yearEndInterest;
   }
   // Display the results
   document.getElementById('results').textContent = '$' + currentSavings.toLocaleString(undefined, {maximumFractionDigits: 2});
+}
+
+function showError(message, inputElement) {
+  alert(message);
+  inputElement.focus();
 }
