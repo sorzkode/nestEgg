@@ -209,3 +209,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Modal functions
+function openInfoModal() {
+  const modal = document.getElementById('infoModal');
+  if (modal) {
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+}
+
+function closeInfoModal() {
+  const modal = document.getElementById('infoModal');
+  if (modal) {
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = ''; // Restore scrolling
+  }
+}
+
+// Close modal when clicking outside of it
+window.addEventListener('click', function(event) {
+  const modal = document.getElementById('infoModal');
+  if (event.target === modal) {
+    closeInfoModal();
+  }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closeInfoModal();
+  }
+});

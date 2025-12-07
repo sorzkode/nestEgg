@@ -31,7 +31,10 @@ Copyright (c) 2025 sorzkode
 		<form id="myForm" role="form" aria-label="Retirement Calculator">
 			<div class="row">
 				<div>
-					<h1 class="text-center"><img src="nestEgg.png" alt="nestEgg Calculator Logo">nestEgg Calculator</h1>
+					<h1 class="text-center">
+						<img src="nestEgg.png" alt="nestEgg Calculator Logo">nestEgg Calculator
+						<button type="button" class="info-btn" onclick="openInfoModal()" title="How calculations work" aria-label="Information about calculations">ℹ️</button>
+					</h1>
 					<div class="form-group">
 						<label for="current-age" id="current-age-label">Current Age<span style="color: rgb(189, 0, 0);" aria-label="required">*</span></label>
 						<div class="input-group">
@@ -155,8 +158,88 @@ Copyright (c) 2025 sorzkode
 						<button type="button" class="btn btn-secondary" onclick="clearForm()"><span class="btn-secondary-addon"><strong>CLEAR</strong> ✖</span></button>
 					</div>
 				</div>
-			</div>  
+			</div>
 		</form>
+	</div>
+
+	<!-- Information Modal -->
+	<div id="infoModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 id="modalTitle">How the nestEgg Calculator Works</h2>
+				<button type="button" class="close-btn" onclick="closeInfoModal()" aria-label="Close">&times;</button>
+			</div>
+			<div class="modal-body">
+				<h3>📊 Calculation Methodology</h3>
+
+				<div class="info-section">
+					<h4>1. Salary Projection</h4>
+					<p>Your salary is projected year-by-year using compound growth:</p>
+					<code>Salary(year) = Current Salary × (1 + Annual Increase)^years</code>
+					<p class="example">Example: $50,000 salary with 2% annual increase becomes $51,000 in year 1, $52,020 in year 2, etc.</p>
+				</div>
+
+				<div class="info-section">
+					<h4>2. Annual Contributions</h4>
+					<p>Each year, contributions are calculated based on your projected salary:</p>
+					<code>Employee Contribution = Salary × Your Contribution %</code>
+					<code>Employer Match = Salary × Employer Match %</code>
+					<code>Total Contribution = Employee + Employer</code>
+					<p class="example">Example: At $50,000 salary with 9% employee and 3% employer match = $4,500 + $1,500 = $6,000/year</p>
+				</div>
+
+				<div class="info-section">
+					<h4>3. Investment Growth</h4>
+					<p>Your account balance grows annually based on your expected rate of return:</p>
+					<code>Interest = (Previous Balance + This Year's Contributions) × Rate of Return</code>
+					<p class="example">Example: $100,000 balance + $6,000 contributions with 6% return = $6,360 growth</p>
+				</div>
+
+				<div class="info-section">
+					<h4>4. Year-by-Year Accumulation</h4>
+					<p>The calculator runs this process for each year until retirement:</p>
+					<ol>
+						<li>Calculate your salary for that year</li>
+						<li>Calculate contributions based on that salary</li>
+						<li>Calculate investment growth on your balance</li>
+						<li>Add contributions and growth to your balance</li>
+						<li>Repeat for the next year</li>
+					</ol>
+				</div>
+
+				<div class="info-section">
+					<h4>5. Inflation Adjustment</h4>
+					<p>The "Purchasing Power" value shows what your final amount would be worth in today's dollars:</p>
+					<code>Real Value = Final Amount / (1 + Inflation Rate)^years</code>
+					<p class="example">Example: $1,000,000 in 30 years with 3% inflation = $412,000 in today's purchasing power</p>
+				</div>
+
+				<div class="info-section">
+					<h4>📈 What You See in Results</h4>
+					<ul>
+						<li><strong>Total at Retirement:</strong> Your projected account balance (nominal dollars)</li>
+						<li><strong>Initial Savings:</strong> What you started with</li>
+						<li><strong>Your Contributions:</strong> Sum of all your contributions over the years</li>
+						<li><strong>Employer Contributions:</strong> Sum of all employer match contributions</li>
+						<li><strong>Investment Growth:</strong> Total returns from your investments</li>
+						<li><strong>Purchasing Power:</strong> What the total is worth in today's dollars</li>
+					</ul>
+				</div>
+
+				<div class="info-section disclaimer">
+					<h4>⚠️ Important Notes</h4>
+					<ul>
+						<li>This calculator provides estimates based on your inputs</li>
+						<li>Actual returns will vary and are not guaranteed</li>
+						<li>Does not account for taxes, fees, or market volatility</li>
+						<li>Consult with a financial advisor for personalized advice</li>
+					</ul>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" onclick="closeInfoModal()">Close</button>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
