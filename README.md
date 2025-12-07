@@ -9,7 +9,9 @@ JavaScript based web form that can be used to calculate the future value of your
 
 ## Example
 
-![alt text](https://raw.githubusercontent.com/sorzkode/nestEgg/master/example.jpg)
+<img width="362" height="947" alt="nestEgg" src="https://github.com/user-attachments/assets/6db139e8-bc5e-4c78-bb1e-d4a24681f269" />
+
+<img width="494" height="831" alt="nestEggmethod" src="https://github.com/user-attachments/assets/3c6a69f8-d31a-4c62-8d09-906f61effa13" />
 
 ## Overview
 
