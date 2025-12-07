@@ -8,23 +8,12 @@
 Syle Sheet for a Nest Egg calculator that determines the future value of your retirement fund.
 -
 Author:
-Mister Riley
-sorzkode@proton.me
+sorzkode
 https://github.com/sorzkode
 
 MIT License
-Copyright (c) 2024 Mister Riley
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Copyright (c) 2025 sorzkode
 */ 
-
-@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
-@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css');
 
 /* Defining color variables */
 :root {
@@ -64,10 +53,11 @@ form {
   box-shadow: 5px 5px 10px var(--black);
   padding: 20px;
   margin-bottom: 50px;
-  width: 600px;
-  display: flex; /* Center the content horizontally */
-  flex-direction: column; /* Stack the content vertically */
-  align-items: center; /* Center the content vertically */
+  width: 100%; 
+  max-width: 600px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
 }
 
 .form-control:focus {
@@ -99,21 +89,21 @@ form {
   grid-template-rows: auto 1fr;
   grid-row-gap: 0px;
   margin-bottom: 20px;
-  width: 100%; /* Stretch the width to match the form */
+  width: 100%; 
 }
 
 .form-group label {
   grid-area: label;
   color: var(--offWhite);
-  text-align: left; /* Left align the label text */
+  text-align: left; 
 }
 
 .form-group input {
   grid-area: input;
   color: var(--offWhite);
   background-color: var(--slateGray);
-  justify-self: center; /* Center the input horizontally */
-  width: 100%; /* Stretch the width to match the form */
+  justify-self: center; 
+  width: 100%; 
 }
 
 .input-group-addon {
@@ -130,7 +120,7 @@ form {
 
 .btn-primary {
   border-radius: 6px;
-  margin-left: auto; /* Align the button to the right */
+  margin-left: auto; 
 }
 
 .btn-primary:focus {
@@ -147,4 +137,210 @@ form {
 .btn-primary-addon i {
   font-size: 1.5em;
   color: var(--offWhite);
+}
+
+/* Error Styling */
+.is-invalid {
+  border: 2px solid var(--burgundy) !important;
+  box-shadow: 0 0 0 2pt rgba(189, 0, 0, 0.3) !important;
+}
+
+.invalid-feedback {
+  display: none;
+  color: var(--burgundy);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Custom Bootstrap-style classes */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background-clip: padding-box;
+  border: 1px solid;
+  border-radius: 6px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 6px;
+  transition: all 0.15s ease-in-out;
+  border: 1px solid transparent;
+  margin: 0 5px;
+}
+
+.btn-primary {
+  color: var(--offWhite);
+  background-color: var(--lime);
+  border-color: var(--lime);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  box-shadow: 0 0 10px var(--lime);
+}
+
+.btn-secondary {
+  color: var(--offWhite);
+  background-color: var(--slateGray);
+  border-color: var(--slateGray);
+}
+
+.btn-secondary:hover {
+  opacity: 0.9;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+/* Results Display */
+.results-container {
+  background-color: rgba(31%, 78%, 47%, 0.1);
+  border: 2px solid var(--lime);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.results-title {
+  color: var(--lime);
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--slateGray);
+}
+
+.result-row:last-child {
+  border-bottom: none;
+}
+
+.result-total {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--lime);
+  border-bottom: 2px solid var(--lime);
+  margin-bottom: 15px;
+}
+
+.result-breakdown {
+  margin: 15px 0;
+  padding-left: 15px;
+}
+
+.result-breakdown .result-row {
+  font-size: 1rem;
+  padding: 8px 0;
+}
+
+.result-inflation {
+  margin-top: 15px;
+  font-style: italic;
+  color: rgba(31%, 78%, 47%, 0.8);
+}
+
+.result-label {
+  color: var(--offWhite);
+}
+
+.result-value {
+  color: var(--lime);
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  form {
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 3px 3px 6px var(--black);
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    margin: 5px 2px;
+  }
+
+  .result-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .result-value {
+    align-self: flex-end;
+  }
+
+  .results-container {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 400px) {
+  form {
+    padding: 10px;
+  }
+
+  h1 img {
+    max-width: 40px;
+  }
+
+  .results-title {
+    font-size: 1.2rem;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
 }

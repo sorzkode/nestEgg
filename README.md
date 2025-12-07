@@ -13,13 +13,12 @@ JavaScript based web form that can be used to calculate the future value of your
 
 ## Overview
 
-The nestEgg Calculator is a simple and easy-to-use calculator that allows users to estimate the future value of their retirement fund. The calculator takes into account various user inputs, such as current age, planned retirement age, current annual salary, expected annual salary increase, retirement contributions, employer match, expected rate of return, expected inflation rate, and current savings.
+A calculator that allows users to estimate the future value of their retirement fund. The calculator takes into account various user inputs, such as current age, planned retirement age, current annual salary, expected annual salary increase, retirement contributions, employer match, expected rate of return, expected inflation rate, and current savings.
 
 ## Features
 
     Calculates the future value of the user's retirement fund based on various inputs
     Provides a breakdown of the user's retirement contributions and employer match
-    Allows users to save their inputs for future reference
 
 ## Installation
 
@@ -46,4 +45,10 @@ The NestEgg Calculator requires the following inputs:
     Review the breakdown of your retirement contributions and employer match.
     Save your inputs for future reference by clicking the "Save" button.
 
+## License  
 
+MIT
+
+## Author  
+
+sorzkode  

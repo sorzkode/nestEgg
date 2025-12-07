@@ -5,30 +5,22 @@
 ██║╚██╗██║██╔══╝  ╚════██║   ██║   ██╔══╝  ██║   ██║██║   ██║
 ██║ ╚████║███████╗███████║   ██║   ███████╗╚██████╔╝╚██████╔╝
 ╚═╝  ╚═══╝╚══════╝╚══════╝   ╚═╝   ╚══════╝ ╚═════╝  ╚═════╝ 
-html for a Nest Egg calculator that determines the future value of your retirement fund.
+A calculator that determines the future value of your retirement fund.
 -
 Author:
-Mister Riley
-sorzkode@proton.me
+sorzkode
 https://github.com/sorzkode
 
 MIT License
-Copyright (c) 2023 Mister Riley
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Copyright (c) 2025 sorzkode
 --> 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>nestEgg</title>
-	<script defer src="scripts\nestEgg.js"></script>
-	<script defer src="scripts\clearForm.js"></script>
+	<script defer src="scripts/nestEgg.js"></script>
+	<script defer src="scripts/clearForm.js"></script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="nestFAVI.png">
@@ -36,35 +28,44 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 </head>
 <body>
 	<div>
-		<form id="myForm">
+		<form id="myForm" role="form" aria-label="Retirement Calculator">
 			<div class="row">
 				<div>
-					<h1 class="text-center"><img src="nestEgg.png">nestEgg Calculator</h1>
+					<h1 class="text-center"><img src="nestEgg.png" alt="nestEgg Calculator Logo">nestEgg Calculator</h1>
 					<div class="form-group">
-						<label for="current-age">Current Age<span style="color: rgb(189, 0, 0);">*</span></label>
+						<label for="current-age" id="current-age-label">Current Age<span style="color: rgb(189, 0, 0);" aria-label="required">*</span></label>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="bi bi-hourglass-top"></i></span>
-							<input type="number" class="form-control" id="current-age" min="15" max="85" placeholder="30" title="Your Age. Range: 15 - 85" required>
+							<span class="input-group-addon" aria-hidden="true">⏳</span>
+							<input type="number"
+								   class="form-control"
+								   id="current-age"
+								   aria-labelledby="current-age-label"
+								   aria-required="true"
+								   min="15"
+								   max="85"
+								   placeholder="30"
+								   title="Your Age. Range: 15 - 85"
+								   required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="retirement-age">Planned Retirement Age<span style="color: rgb(189, 0, 0);">*</span></label>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="bi bi-hourglass-bottom"></i></span>
+							<span class="input-group-addon">⌛</span>
 							<input type="number" class="form-control" id="retirement-age" min="15" max="95" placeholder="65" title="Your Retirement Age. Range: 15 - 95" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="current-salary">Current Annual Salary<span style="color: rgb(189, 0, 0);">*</span></label>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="bi bi-currency-dollar"></i></span>
+							<span class="input-group-addon">$</span>
 							<input type="number" class="form-control" id="current-salary" placeholder="50000" title="Your Salary as a Whole Number" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="salary-increase">Expected Annual Salary Increase<span style="color: rgb(189, 0, 0);">*</span></label>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="bi bi-arrow-up"></i></span>
+							<span class="input-group-addon">↑</span>
 							<input type="number" class="form-control" id="salary-increase" placeholder="2" title="Salary % Increase as a Whole Number" required>
 						</div>
 						<span class="user-hint" style="color: yellow;">Salary % Increase as a Whole Number</span>
@@ -72,7 +73,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 					<div class="form-group">
 						<label for="employee-cont">Your Retirement Contributions<span style="color: rgb(189, 0, 0);">*</span></label>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="bi bi-cash-coin"></i></span>
+							<span class="input-group-addon">💰</span>
 							<input type="number" class="form-control" id="employee-cont" min="0" max="100" placeholder="9" title="Contribution % as a Whole Number" required>
 						</div>
 						<span class="user-hint" style="color: yellow;">Contribution % as a Whole Number</span>
@@ -80,7 +81,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 					<div class="form-group">
 						<label for="employer-cont">Employer Match<span style="color: rgb(189, 0, 0);">*</span></label>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="bi bi-building-fill-add"></i></span>
+							<span class="input-group-addon">🏢</span>
 							<input type="number" class="form-control" id="employer-cont" min="0" max="100" placeholder="3" title="Employer Match % as a Whole Number" required>
 						</div>
 						<span class="user-hint" style="color: yellow;">Employer Match % as a Whole Number</span>
@@ -88,7 +89,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 					<div class="form-group">
 						<label for="interest-rate">Expected Rate of Return<span style="color: rgb(189, 0, 0);">*</span></label>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="bi bi-percent"></i></span>
+							<span class="input-group-addon">%</span>
 							<input type="number" class="form-control" id="interest-rate" min="0" max="100" placeholder="6" title="Rate of Return % as a Whole Number" required>
 						</div>
 						<span class="user-hint" style="color: yellow;">Rate of Return % as a Whole Number</span>
@@ -96,7 +97,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 					<div class="form-group">
 						<label for="inflation-rate">Expected Inflation Rate<span style="color: rgb(189, 0, 0);">*</span></label>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="bi bi-balloon-fill"></i></span>
+							<span class="input-group-addon">🎈</span>
 							<input type="number" class="form-control" id="inflation-rate" min="1" max="15" placeholder="3" title="Inflation Rate % as a Whole Number" required>
 						</div>
 						<span class="user-hint" style="color: yellow;">Inflation Rate % as a Whole Number</span>
@@ -104,20 +105,54 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 					<div class="form-group">
 						<label for="current-savings">Current Savings<span style="color: rgb(189, 0, 0);">*</span></label>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="bi bi-piggy-bank-fill"></i></span>
+							<span class="input-group-addon">🐷</span>
 							<input type="number" class="form-control" id="current-savings" placeholder="75000" title="Your Savings as a Whole Number" required>
 						</div>
 					</div>
-					<div class="form-group" style="text-align: center;">
+					<div class="form-group results-container" id="results-container" style="display: none;">
+						<h4 class="results-title">Your Retirement Projection</h4>
+
+						<div class="result-row result-total">
+							<span class="result-label">Total at Retirement:</span>
+							<span class="result-value" id="results-total">$0</span>
+						</div>
+
+						<div class="result-breakdown">
+							<div class="result-row">
+								<span class="result-label">Initial Savings:</span>
+								<span class="result-value" id="results-initial">$0</span>
+							</div>
+							<div class="result-row">
+								<span class="result-label">Your Contributions:</span>
+								<span class="result-value" id="results-employee">$0</span>
+							</div>
+							<div class="result-row">
+								<span class="result-label">Employer Contributions:</span>
+								<span class="result-value" id="results-employer">$0</span>
+							</div>
+							<div class="result-row">
+								<span class="result-label">Investment Growth:</span>
+								<span class="result-value" id="results-interest">$0</span>
+							</div>
+						</div>
+
+						<div class="result-row result-inflation">
+							<span class="result-label">Purchasing Power (Today's $):</span>
+							<span class="result-value" id="results-inflation-adjusted">$0</span>
+						</div>
+					</div>
+
+					<!-- Simple Results Display (fallback/backwards compatibility) -->
+					<div class="form-group" id="simple-results" style="text-align: center;">
 						<label for="results"><span style="color:rgba(31%, 78%, 47%, 1);"><h4>Approximate nestEgg...</span></h4></label>
 						<div class="input-group">
-							<span class="input-group-addon" style="margin-right: 20px;"><i class="bi bi-egg-fill"></i></span>
+							<span class="input-group-addon" style="margin-right: 20px;">🥚</span>
 							<h4 id="results">$</h4>
 						</div>
 					</div>
 					<div style="text-align: right;">
-						<button type="button" class="btn btn-primary" onclick="nestEgg()"><span class="btn-primary-addon"><strong>CALCULATE</strong> <i class="bi bi-calculator-fill"></i></span></button>
-						<button type="button" class="btn btn-secondary" onclick="clearForm()"><span class="btn-secondary-addon"><strong>CLEAR</strong> <i class="bi bi-x-circle-fill"></i></span></button>
+						<button type="button" class="btn btn-primary" onclick="nestEgg()"><span class="btn-primary-addon"><strong>CALCULATE</strong> 🔢</span></button>
+						<button type="button" class="btn btn-secondary" onclick="clearForm()"><span class="btn-secondary-addon"><strong>CLEAR</strong> ✖</span></button>
 					</div>
 				</div>
 			</div>  
